@@ -30,6 +30,16 @@ public class BookController
         return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
 
+    @PostMapping("/deleteBook")
+    public ResponseEntity<Object> deleteBook(@RequestBody Book book)
+    {
+        System.out.println(book.getId() + 1); // REMOVE
+        System.out.println(repository.findAll());
+        repository.deleteById(book.getId() + 1);
+        ServiceResponse<Book> response = new ServiceResponse<Book>("success", book);
+        return new ResponseEntity<Object>(response, HttpStatus.OK);
+    }
+
     @GetMapping("/getBooks")
     public ResponseEntity<Object> getAllBooks()
     {

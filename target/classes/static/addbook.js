@@ -2,7 +2,7 @@ $(document).ready(
 		function() {
 
 			// SUBMIT FORM
-			$("#bookForm").submit(function(event) {
+			$("#insertForm").submit(function(event) {
 				event.preventDefault();
 				ajaxPost();
 			});
@@ -29,6 +29,7 @@ $(document).ready(
 							$("#postResultDiv").html("<strong>Error</strong>");
 						}
 						console.log(result);
+						ajaxGet();
 					},
 					error : function(e) {
 						alert("Error!")

@@ -13,14 +13,14 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-<script src="/postrequest.js"></script>
+<script src="/addbook.js"></script>
+	<script src="/deletebook.js"></script>
 <script src="/getrequest.js"></script>
 </head>
 <body>
-	<div id="postResultDiv"></div>
 	<div class="container">
-		<h2>Stacked form</h2>
-		<form id="bookForm">
+		<h2>Insert form</h2>
+		<form id="insertForm">
 			<div class="form-group">
 				<label for="bookId">Book ID:</label> <input type="text"
 					class="form-control" id="bookId" placeholder="Enter Book Id"
@@ -39,6 +39,18 @@
 			<button type="submit" class="btn btn-primary">Submit</button>
 		</form>
 		<br />
+
+		<h2>Delete form</h2>
+		<form id="deleteForm">
+			<div class="form-group">
+				<label for="bookId">Book ID:</label> <input type="text"
+															class="form-control" id="deleteId" placeholder="Enter Book Id"
+															name="bookId">
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+		<br />
+
 		<div class="col-sm-7" style="margin: 20px 0px 20px 0px">
 			<button id="getALlBooks" type="button" class="btn btn-primary">Get
 				All Books</button>
