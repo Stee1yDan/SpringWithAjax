@@ -4,20 +4,21 @@ $(document).ready(
         // SUBMIT FORM
         $("#deleteForm").submit(function(event) {
             event.preventDefault();
+            $.ajax("deleteBook/" + $("#deleteId").val());
             ajaxPost();
         });
 
         function ajaxPost() {
 
             // PREPARE FORM DATA
-            var formData = {
-                bookId : $("#id").val(),
+            let formData = {
+                deleteId : $("#deleteId").val(),
             }
 
             $.ajax({
                 type : "POST",
                 contentType : "application/json",
-                url : "deleteBook",
+                url : "deleteBook/" + $("#deleteId").val(),
                 data : JSON.stringify(formData),
                 dataType : 'json',
                 success : function(result) {
@@ -46,7 +47,9 @@ $(document).ready(
                         var custList = "";
                         $.each(result.data,
                             function(i, book) {
-                                var user = "Book Name  "
+                                var user =
+                                    "id = " + book.id	+
+                                    " Book Name = "
                                     + book.bookName
                                     + ", Author  = " + book.author
                                     + "<br>";

@@ -2,7 +2,7 @@ $(document).ready(
     function () {
 
         // SUBMIT FORM
-        $("#insertForm").submit(function (event) {
+        $("#editForm").submit(function (event) {
             event.preventDefault();
             ajaxPost();
         });
@@ -11,14 +11,15 @@ $(document).ready(
 
             // PREPARE FORM DATA
             let formData = {
-                bookName: $("#bookName").val(),
-                author: $("#author").val()
+                bookId: $("#editId").val(),
+                bookName: $("#editBookName").val(),
+                author: $("#editAuthor").val()
             }
 
             $.ajax({
                 type: "POST",
                 contentType: "application/json",
-                url: "saveBook",
+                url: "editBook",
                 data: JSON.stringify(formData),
                 dataType: 'json',
                 success: function (result) {

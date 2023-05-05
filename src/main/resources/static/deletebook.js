@@ -4,37 +4,9 @@ $(document).ready(
         // SUBMIT FORM
         $("#deleteForm").submit(function(event) {
             event.preventDefault();
-            ajaxPost();
+            $.ajax("deleteBook/" + $("#deleteId").val());
+            ajaxGet();
         });
-
-        function ajaxPost() {
-
-            // PREPARE FORM DATA
-            var formData = {
-                bookId : $("#id").val(),
-            }
-
-            $.ajax({
-                type : "POST",
-                contentType : "application/json",
-                url : "deleteBook",
-                data : JSON.stringify(formData),
-                dataType : 'json',
-                success : function(result) {
-                    if (result.status == "success") {
-                        $("#postResultDiv").html();
-                    } else {
-                        $("#postResultDiv").html("<strong>Error</strong>");
-                    }
-                    console.log(result);
-                    ajaxGet();
-                },
-                error : function(e) {
-                    alert("Error!")
-                    console.log("ERROR: ", e);
-                }
-            });
-        }
 
         function ajaxGet() {
             $.ajax({
@@ -46,7 +18,9 @@ $(document).ready(
                         var custList = "";
                         $.each(result.data,
                             function(i, book) {
-                                var user = "Book Name  "
+                                var user =
+                                    "id = " + book.id	+
+                                    " Book Name = "
                                     + book.bookName
                                     + ", Author  = " + book.author
                                     + "<br>";
