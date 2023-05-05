@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.javatechie.spring.ajax.api.dto.Book;
-import com.javatechie.spring.ajax.api.dto.ServiceResponse;
+import com.javatechie.spring.ajax.api.model.Book;
+import com.javatechie.spring.ajax.api.model.ServiceResponse;
 
 @RestController
 @RequestMapping

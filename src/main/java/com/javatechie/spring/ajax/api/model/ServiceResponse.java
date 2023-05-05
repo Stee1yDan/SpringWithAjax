@@ -1,4 +1,4 @@
-package com.javatechie.spring.ajax.api.dto;
+package com.javatechie.spring.ajax.api.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

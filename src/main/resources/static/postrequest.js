@@ -16,7 +16,6 @@ $(document).ready(
 					author : $("#author").val()
 				}
 
-				// DO POST
 				$.ajax({
 					type : "POST",
 					contentType : "application/json",
@@ -25,10 +24,8 @@ $(document).ready(
 					dataType : 'json',
 					success : function(result) {
 						if (result.status == "success") {
-							$("#postResultDiv").html(
-									"" + result.data.bookName
-											+ "Post Successfully! <br>"
-											+ "---> Congrats !!" + "</p>");
+							$("#postResultDiv").html();
+							ajaxGet();
 						} else {
 							$("#postResultDiv").html("<strong>Error</strong>");
 						}
@@ -36,6 +33,36 @@ $(document).ready(
 					},
 					error : function(e) {
 						alert("Error!")
+						console.log("ERROR: ", e);
+					}
+				});
+			}
+
+			function ajaxGet() {
+				$.ajax({
+					type : "GET",
+					url : "getBooks",
+					success : function(result) {
+						if (result.status == "success") {
+							$('#getResultDiv ul').empty();
+							var custList = "";
+							$.each(result.data,
+								function(i, book) {
+									var user = "Book Name  "
+										+ book.bookName
+										+ ", Author  = " + book.author
+										+ "<br>";
+									$('#getResultDiv .list-group').append(
+										user)
+								});
+							console.log("Success: ", result);
+						} else {
+							$("#getResultDiv").html("<strong>Error</strong>");
+							console.log("Fail: ", result);
+						}
+					},
+					error : function(e) {
+						$("#getResultDiv").html("<strong>Error</strong>");
 						console.log("ERROR: ", e);
 					}
 				});
