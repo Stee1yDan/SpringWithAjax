@@ -1,8 +1,8 @@
 package com.javatechie.spring.ajax.api.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import com.javatechie.spring.ajax.api.repository.BookRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,12 +15,17 @@ import com.javatechie.spring.ajax.api.model.ServiceResponse;
 public class BookController
 {
 
-    List<Book> bookStore = new ArrayList<>();
+    private final BookRepository repository;
+
+    public BookController(BookRepository repository)
+    {
+        this.repository = repository;
+    }
 
     @PostMapping("/saveBook")
     public ResponseEntity<Object> addBook(@RequestBody Book book)
     {
-        bookStore.add(book);
+        repository.save(book);
         ServiceResponse<Book> response = new ServiceResponse<Book>("success", book);
         return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
@@ -28,7 +33,7 @@ public class BookController
     @GetMapping("/getBooks")
     public ResponseEntity<Object> getAllBooks()
     {
-        ServiceResponse<List<Book>> response = new ServiceResponse<>("success", bookStore);
+        ServiceResponse<List<Book>> response = new ServiceResponse<>("success", repository.findAll());
         return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
 }

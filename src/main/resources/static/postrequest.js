@@ -11,7 +11,7 @@ $(document).ready(
 
 				// PREPARE FORM DATA
 				var formData = {
-					bookId : $("#bookId").val(),
+					bookId : $("#id").val(),
 					bookName : $("#bookName").val(),
 					author : $("#author").val()
 				}
@@ -25,7 +25,6 @@ $(document).ready(
 					success : function(result) {
 						if (result.status == "success") {
 							$("#postResultDiv").html();
-							ajaxGet();
 						} else {
 							$("#postResultDiv").html("<strong>Error</strong>");
 						}
