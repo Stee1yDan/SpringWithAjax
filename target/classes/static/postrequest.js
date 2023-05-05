@@ -16,7 +16,6 @@ $(document).ready(
 					author : $("#author").val()
 				}
 
-				// DO POST
 				$.ajax({
 					type : "POST",
 					contentType : "application/json",
