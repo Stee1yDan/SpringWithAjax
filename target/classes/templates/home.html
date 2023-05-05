@@ -15,7 +15,9 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script src="/addbook.js"></script>
 	<script src="/deletebook.js"></script>
+	<script src="/editbook.js"></script>
 <script src="/getrequest.js"></script>
+
 </head>
 <body>
 	<div class="container">
@@ -27,7 +29,7 @@
 					name="bookName">
 			</div>
 			<div class="form-group">
-				<label for="author">Author :</label> <input type="text"
+				<label for="author">Author:</label> <input type="text"
 					class="form-control" id="author" placeholder="Enter Author name"
 					name="author">
 			</div>
@@ -38,7 +40,7 @@
 		<h2>Delete form</h2>
 		<form id="deleteForm">
 			<div class="form-group">
-				<label for="bookId">Book ID:</label> <input type="text"
+				<label for="deleteId">Book ID:</label> <input type="text"
 															class="form-control" id="deleteId" placeholder="Enter Book Id"
 															name="bookId">
 			</div>
@@ -49,17 +51,17 @@
 		<h2>Edit form</h2>
 		<form id="editForm">
 			<div class="form-group">
-				<label for="bookId">Book ID:</label> <input type="text"
+				<label for="editId">Book ID:</label> <input type="text"
 															class="form-control" id="editId" placeholder="Enter Book Id"
 															name="bookId">
 			</div>
 			<div class="form-group">
-				<label for="bookName">Book Name:</label> <input type="text"
+				<label for="editBookName">Book Name:</label> <input type="text"
 																class="form-control" id="editBookName" placeholder="Enter Book Name"
 																name="bookName">
 			</div>
 			<div class="form-group">
-				<label for="author">Author :</label> <input type="text"
+				<label for="editAuthor">Author:</label> <input type="text"
 															class="form-control" id="editAuthor" placeholder="Enter Author name"
 															name="author">
 			</div>
@@ -67,14 +69,10 @@
 		</form>
 		<br />
 
-		<div class="col-sm-7" style="margin: 20px 0px 20px 0px">
-			<button id="getALlBooks" type="button" class="btn btn-primary">Get
-				All Books</button>
 			<div id="getResultDiv" style="padding: 20px 10px 20px 50px">
 				<ul class="list-group">
 				</ul>
 			</div>
-		</div>
 	</div>
 </body>
 </html>

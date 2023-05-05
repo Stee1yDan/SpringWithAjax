@@ -6,6 +6,10 @@ GET: $(document).ready(
 				ajaxGet();
 			});
 
+			$(document).ready ( function(){
+				ajaxGet();
+			});
+
 			function ajaxGet() {
 				$.ajax({
 					type : "GET",

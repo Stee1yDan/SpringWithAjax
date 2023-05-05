@@ -1,55 +1,26 @@
 $(document).ready(
-    function () {
-
+    function() {
         // SUBMIT FORM
-        $("#editForm").submit(function (event) {
+        $("#editForm").submit(function(event) {
             event.preventDefault();
-            ajaxPost();
+            $.ajax("editBook?id=" + $("#editId").val()
+                + "&name=" + $("#editBookName").val()
+                + "&author=" + $("#editAuthor").val());
+            ajaxGet();
         });
-
-        function ajaxPost() {
-
-            // PREPARE FORM DATA
-            let formData = {
-                bookId: $("#editId").val(),
-                bookName: $("#editBookName").val(),
-                author: $("#editAuthor").val()
-            }
-
-            $.ajax({
-                type: "POST",
-                contentType: "application/json",
-                url: "editBook",
-                data: JSON.stringify(formData),
-                dataType: 'json',
-                success: function (result) {
-                    if (result.status == "success") {
-                        $("#postResultDiv").html();
-                    } else {
-                        $("#postResultDiv").html("<strong>Error</strong>");
-                    }
-                    console.log(result);
-                    ajaxGet();
-                },
-                error: function (e) {
-                    alert("Error!")
-                    console.log("ERROR: ", e);
-                }
-            });
-        }
 
         function ajaxGet() {
             $.ajax({
-                type: "GET",
-                url: "getBooks",
-                success: function (result) {
+                type : "GET",
+                url : "getBooks",
+                success : function(result) {
                     if (result.status == "success") {
                         $('#getResultDiv ul').empty();
                         var custList = "";
                         $.each(result.data,
-                            function (i, book) {
+                            function(i, book) {
                                 var user =
-                                    "id = " + book.id +
+                                    "id = " + book.id	+
                                     " Book Name = "
                                     + book.bookName
                                     + ", Author  = " + book.author
@@ -63,7 +34,7 @@ $(document).ready(
                         console.log("Fail: ", result);
                     }
                 },
-                error: function (e) {
+                error : function(e) {
                     $("#getResultDiv").html("<strong>Error</strong>");
                     console.log("ERROR: ", e);
                 }

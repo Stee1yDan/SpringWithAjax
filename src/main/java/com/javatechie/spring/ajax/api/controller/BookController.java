@@ -30,7 +30,7 @@ public class BookController
         return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
 
-    @PostMapping("/deleteBook/{id}")
+    @GetMapping("/deleteBook/{id}")
     public ResponseEntity<Object> deleteBook(@PathVariable int id)
     {
         repository.deleteById(id);
@@ -38,13 +38,16 @@ public class BookController
         return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
 
-    @PostMapping("/editBook")
-    public ResponseEntity<Object> editBook(@RequestBody Book book)
+    @GetMapping("/editBook")
+    @ResponseBody
+    public ResponseEntity<Object> editBook(@RequestParam int id, @RequestParam String name, @RequestParam String author)
     {
-        System.out.println(1);
-        repository.deleteById(book.getId() + 1);
-        repository.save(book);
-        ServiceResponse<Book> response = new ServiceResponse<Book>("success", book);
+        Book bookToUpdate = repository.getOne(id);
+        bookToUpdate.setBookName(name);
+        bookToUpdate.setAuthor(author);
+        repository.save(bookToUpdate);
+
+        ServiceResponse<Book> response = new ServiceResponse<Book>("success", null);
         return new ResponseEntity<Object>(response, HttpStatus.OK);
     }
 
